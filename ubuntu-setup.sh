@@ -5,7 +5,7 @@
 sudo apt install git -y
 sudo apt install snapd -y
 sudo snap install slack --classic
-sudo snap install spotify
+#sudo snap install spotify
 sudo snap install phpstorm --classic
 sudo snap install code --classic
 sudo snap install evernote-web-client
@@ -57,9 +57,9 @@ sudo apt install guake # hot window terminal
 #wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
 
 # Install NVIDIA driver.
-sudo apt install gcc make
-wget https://us.download.nvidia.com/XFree86/Linux-x86_64/510.68.02/NVIDIA-Linux-x86_64-510.68.02.run
-sudo bash NVIDIA-Linux-x86_64-510.68.02.run 
+#sudo apt install gcc make
+#wget https://us.download.nvidia.com/XFree86/Linux-x86_64/510.68.02/NVIDIA-Linux-x86_64-510.68.02.run
+#sudo bash NVIDIA-Linux-x86_64-510.68.02.run 
 
 # Remove sudo password
 sudo sh -c 'echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers'
@@ -113,5 +113,23 @@ sudo sh -c 'echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers'
 
 # disable avahi-daemon
 #sudo systemctl disable avahi-daemon
+
+#install php fpm 
+apt update
+sudo apt install software-properties-common apt-transport-https -y
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt install php8.1-fpm php8.1-common php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-curl php8.1-gd php8.1-imagick php8.1-cli php8.1-dev php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap php8.1-zip php8.1-intl php8.1-bcmath
+
+#install composer 
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.5.4
+
+#install laravel installer
+composer global require laravel/installer
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+source $HOME/.bashrc
+laravel -V
+
+#install htop
+apt install htop
 
 echo "██████ You may need to reboot your machine to make Lando work properly ██████"
